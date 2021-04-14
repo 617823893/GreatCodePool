@@ -1,0 +1,58 @@
+Method 1: Using list.index()
+
+The index() method returns index of corresponding value in a list. Below is an implementation how to use index() method to fetch Dictionary key using value.  
+
+Python3
+
+# creating a new dictionary
+my_dict ={"java":100, "python":112, "c":11}
+ 
+# list out keys and values separately
+key_list = list(my_dict.keys())
+val_list = list(my_dict.values())
+ 
+# print key with val 100
+position = val_list.index(100)
+print(key_list[position])
+ 
+# print key with val 112
+position = val_list.index(112)
+print(key_list[position])
+ 
+# one-liner
+print(list(my_dict.keys())[list(my_dict.values()).index(112)])
+
+Output: 
+java
+python
+python
+
+Explanation: 
+The approach used here is to find two separate lists of keys and values. 
+Then fetch the key using the position of the value in the val_list. 
+As key at any position N in key_list will have corresponding value at position N in val_list.
+
+
+Method #2: Using dict.item() 
+We can also fetch key from a value by matching all the values and then print the corresponding key to given value.  
+
+Python3
+
+# function to return key for any value
+def get_key(val):
+    for key, value in my_dict.items():
+         if val == value:
+             return key
+ 
+    return "key doesn't exist"
+ 
+# Driver Code
+ 
+my_dict ={"java":100, "python":112, "c":11}
+ 
+print(get_key(100))
+print(get_key(11))
+
+Output: 
+java
+c
